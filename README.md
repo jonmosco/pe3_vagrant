@@ -29,6 +29,8 @@ After boot, in order to use the PE environment, you have to add
 export PATH=$PATH:/opt/puppet/bin
 ```
 
+After the environment has booted, you can browse to the Enterprise Console at:
+https://192.168.34.10
 
 ###TODO
 * Add /opt/puppet/bin to the $PATH permanently

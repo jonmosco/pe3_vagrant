@@ -1,3 +1,6 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby
+#
 # Download PE and add it with the following command:
 # vagrant pe-build copy <pe>
 #
