@@ -8,19 +8,23 @@
 # TODO
 # add export PATH=$PATH:/opt/puppet/bin
 #
+$script = <<SCRIPT1
+/sbin/service iptables stop
+SCRIPT1
+
 Vagrant.configure('2') do |config|
 
   ## Version of PE we are installing
-  config.pe_build.version = '3.3.1'
+  config.pe_build.version = '3.3.2'
 
   ## Pupppet Master
   config.vm.define 'master' do |master|
     master.vm.box = 'centos64'
+    ## Plugin defaults to 'master' as the hostname
     master.vm.hostname = 'master'
     master.vm.network :private_network, ip: "192.168.34.10"
 
-    master.vm.provision "shell",
-      inline: "/sbin/service iptables stop"
+    master.vm.provision "shell", inline: $script
 
     master.vm.provision :hosts do |provisioner|
       provisioner.autoconfigure = true
@@ -43,8 +47,7 @@ Vagrant.configure('2') do |config|
     node.vm.hostname = 'agent1.example.com'
     node.vm.network :private_network, ip: "192.168.34.11"
 
-    node.vm.provision "shell",
-      inline: "/sbin/service iptables stop"
+    node.vm.provision "shell", inline: $script
 
     node.vm.provision :hosts do |provisioner|
       provisioner.autoconfigure = true
@@ -59,5 +62,4 @@ Vagrant.configure('2') do |config|
     node.vm.provision :pe_bootstrap
 
   end
-
 end
