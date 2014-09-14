@@ -16,7 +16,7 @@ $script = <<SCRIPT
 SCRIPT
 
 ## This environment requires a working and semi-sane DNS
-unless Vagrant.has_plugin?("test")
+unless Vagrant.has_plugin?("vagrant-hosts")
   raise "This environment requires a sane DNS setup.  Please install
   the vagrant-hosts plugin"
 end
