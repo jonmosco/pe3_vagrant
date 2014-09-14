@@ -11,14 +11,22 @@
 # TODO
 # add export PATH=$PATH:/opt/puppet/bin
 #
-$script = <<SCRIPT1
+$script = <<SCRIPT
 /sbin/service iptables stop
-SCRIPT1
+SCRIPT
+
+## This environment requires a working and semi-sane DNS
+unless Vagrant.has_plugin?("test")
+  raise "This environment requires a sane DNS setup.  Please install
+  the vagrant-hosts plugin"
+end
 
 Vagrant.configure('2') do |config|
 
-  ## Version of PE we are installing
-  config.pe_build.version = '3.3.2'
+  ## Increase our memory
+  config.vm.provider "vmware_fusion" do |v|
+    v.vmx["memsize"] = "1024"
+  end
 
   ## Pupppet Master
   config.vm.define 'master' do |master|
@@ -37,11 +45,13 @@ Vagrant.configure('2') do |config|
       ]
     end
 
+    ## Version of PE we are installing
+    config.pe_build.version = '3.3.2'
+
     ## Install PE master, console, and DB
     master.vm.provision :pe_bootstrap do |provisioner|
       provisioner.role = :master
     end
-
   end
 
   ## Agent
