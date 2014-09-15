@@ -18,7 +18,7 @@ Add the base box.  I have had great success with PuppetLabs Vagrant
 Boxes:
 
 ```
-$ vagrant box add http://puppet-vagrant-boxes.puppetlabs.com/centos-64-x64-fusion503-nocm.box
+$ vagrant box centos6 add http://puppet-vagrant-boxes.puppetlabs.com/centos-64-x64-fusion503-nocm.box
 ```
 
  Download PE from puppetlabs.com
