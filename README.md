@@ -23,6 +23,7 @@ Set the version of Puppet Enterprise you will be installing
 PE_VERSION = '3.3.x'
 ```
 
+Boot the envionment with the VMware Fusion provider
 ```
 $ vagrant up --provider=vmware_fusion
 ```
