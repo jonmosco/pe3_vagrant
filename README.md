@@ -11,7 +11,7 @@
  https://github.com/adrienthebo/vagrant-hosts
 
 ##Usage
-NOTE:  All these examples assume usage with the VMWare Fusion provider.  If
+NOTE:  All these examples assume usage with the VMware Fusion provider.  If
 you are using VirtualBox, please adjust accordingly.
 
 Add the base box.  I have had great success with PuppetLabs Vagrant
@@ -21,9 +21,9 @@ Boxes:
 $ vagrant box add http://puppet-vagrant-boxes.puppetlabs.com/centos-64-x64-fusion503-nocm.box
 ```
 
-Download PE from puppetlabs.com
+ Download PE from puppetlabs.com
 
-Add PE with the vagrant pe_build plugin:
+ Add PE with the vagrant pe_build plugin:
 ```
 $ vagrant pe-build copy <path_to_pe_tar.gz>
 ```
@@ -51,4 +51,3 @@ After the environment has booted, you can browse to the Enterprise Console at:
   $ vagrant ssh agent1
 
 ###TODO
-* Add /opt/puppet/bin to the $PATH permanently
