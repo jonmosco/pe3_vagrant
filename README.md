@@ -11,6 +11,16 @@
  https://github.com/adrienthebo/vagrant-hosts
 
 ##Usage
+NOTE:  All these examples assume usage with the VMWare Fusion provider.  If
+you are using VirtualBox, please adjust accordingly.
+
+Add the base box.  I have had great success with PuppetLabs Vagrant
+Boxes:
+
+```
+$ vagrant box add http://puppet-vagrant-boxes.puppetlabs.com/centos-64-x64-fusion503-nocm.box
+```
+
 Download PE from puppetlabs.com
 
 Add PE with the vagrant pe_build plugin:
