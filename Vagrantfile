@@ -75,5 +75,6 @@ Vagrant.configure('2') do |config|
 
     ## Install PE agent
     node.vm.provision :pe_bootstrap
+
   end
 end
