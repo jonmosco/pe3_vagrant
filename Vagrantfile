@@ -9,9 +9,13 @@
 # Password: puppetlabs
 #
 # TODO
-# add export PATH=$PATH:/opt/puppet/bin
 #
+
+## Version of Puppet Enterprise we are going to install
+PE_VERSION='3.3.2'
+
 $script = <<SCRIPT
+echo 'export PATH=$PATH:/opt/puppet/bin' > /etc/profile.d/pe_path.sh
 /sbin/service iptables stop
 SCRIPT
 
@@ -46,7 +50,7 @@ Vagrant.configure('2') do |config|
     end
 
     ## Version of PE we are installing
-    config.pe_build.version = '3.3.2'
+    config.pe_build.version = "#{PE_VERSION}"
 
     ## Install PE master, console, and DB
     master.vm.provision :pe_bootstrap do |provisioner|

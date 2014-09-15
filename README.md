@@ -15,7 +15,12 @@ Download PE from puppetlabs.com
 
 Add PE with the vagrant pe_build plugin:
 ```
-$ vagrant pe-build add <path_to_pe_tar.gz>
+$ vagrant pe-build copy <path_to_pe_tar.gz>
+```
+
+Set the version of Puppet Enterprise you will be installing
+```ruby
+PE_VERSION = '3.3.x'
 ```
 
 ```
