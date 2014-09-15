@@ -8,8 +8,6 @@
 # Username: admin@puppetlabs.com
 # Password: puppetlabs
 #
-# TODO
-#
 
 ## Version of Puppet Enterprise we are going to install
 PE_VERSION='3.3.2'
@@ -20,13 +18,13 @@ echo 'export PATH=$PATH:/opt/puppet/bin' > /etc/profile.d/pe_path.sh
 SCRIPT
 
 ## This environment requires a working and semi-sane DNS
+## vagrant-hosts plugin will provide this
 unless Vagrant.has_plugin?("vagrant-hosts")
   raise "This environment requires a sane DNS setup.  Please install
   the vagrant-hosts plugin"
 end
 
 Vagrant.configure('2') do |config|
-
   ## Increase our memory
   config.vm.provider "vmware_fusion" do |v|
     v.vmx["memsize"] = "1024"
@@ -77,6 +75,5 @@ Vagrant.configure('2') do |config|
 
     ## Install PE agent
     node.vm.provision :pe_bootstrap
-
   end
 end
