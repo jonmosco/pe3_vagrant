@@ -10,7 +10,7 @@
 #
 
 ## Version of Puppet Enterprise we are going to install
-PE_VERSION='3.3.2'
+PE_VERSION="3.3.2"
 
 $script = <<SCRIPT
 echo 'export PATH=$PATH:/opt/puppet/bin' > /etc/profile.d/pe_path.sh
@@ -33,6 +33,7 @@ Vagrant.configure('2') do |config|
   ## Pupppet Master
   config.vm.define 'master' do |master|
     master.vm.box = 'centos64'
+    master.vm.box_url = "http://puppet-vagrant-boxes.puppetlabs.com/centos-64-x64-fusion503-nocm.box"
     ## Plugin defaults to 'master' as the hostname
     master.vm.hostname = 'master'
     master.vm.network :private_network, ip: "192.168.34.10"
@@ -59,6 +60,7 @@ Vagrant.configure('2') do |config|
   ## Agent
   config.vm.define 'agent1' do |node|
     node.vm.box = 'centos64'
+    node.vm.box_url = "http://puppet-vagrant-boxes.puppetlabs.com/centos-64-x64-fusion503-nocm.box"
     node.vm.hostname = 'agent1.example.com'
     node.vm.network :private_network, ip: "192.168.34.11"
 
