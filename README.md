@@ -43,16 +43,18 @@ After the environment has booted, you can browse to the Enterprise Console at:
   https://192.168.34.10
 
 ##Logging in
+```
+Puppet Master:
+$ vagrant ssh master
 
-  Puppet Master:
-  $ vagrant ssh master
-
-  Puppet Node:
-  $ vagrant ssh agent1
+Puppet Node:
+$ vagrant ssh agent1
+```
 
 ##Logging into the Console
-
-  Username: admin@puppetlabs.com
-  Password: puppetlabs
+```
+Username: admin@puppetlabs.com
+Password: puppetlabs
+```
 
 ###TODO
