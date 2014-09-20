@@ -1,9 +1,5 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby
-#
-# Console info:
-# Username: admin@puppetlabs.com
-# Password: puppetlabs
 
 ## Memory
 MEMORY="1024"
