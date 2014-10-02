@@ -1,21 +1,16 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby
-#
-# Download PE and add it with the following command:
-# vagrant pe-build copy <pe>
-#
-# Console info:
-# Username: admin@puppetlabs.com
-# Password: puppetlabs
-#
+
+## Memory
+MEMORY="1024"
 
 ## Version of Puppet Enterprise we are going to install
 PE_VERSION="3.3.2"
 
-$script = <<SCRIPT
+$script = <<EOF
 echo 'export PATH=$PATH:/opt/puppet/bin' > /etc/profile.d/pe_path.sh
 /sbin/service iptables stop
-SCRIPT
+EOF
 
 ## This environment requires a working and semi-sane DNS
 ## vagrant-hosts plugin will provide this
@@ -28,7 +23,7 @@ Vagrant.configure('2') do |config|
   ## Increase our memory
   config.vm.synced_folder ".", "/vagrant", type: "nfs"
   config.vm.provider "vmware_fusion" do |v|
-    v.vmx["memsize"] = "1024"
+    v.vmx["memsize"] = "#{MEMORY}"
   end
 
   ## Pupppet Master
@@ -38,9 +33,7 @@ Vagrant.configure('2') do |config|
     ## Plugin defaults to 'master' as the hostname
     master.vm.hostname = 'master'
     master.vm.network :private_network, ip: "192.168.34.10"
-
     master.vm.provision "shell", inline: $script
-
     master.vm.provision :hosts do |provisioner|
       provisioner.autoconfigure = true
       provisioner.add_host '192.168.34.10', [
@@ -51,7 +44,6 @@ Vagrant.configure('2') do |config|
 
     ## Version of PE we are installing
     config.pe_build.version = "#{PE_VERSION}"
-
     ## Install PE master, console, and DB
     master.vm.provision :pe_bootstrap do |provisioner|
       provisioner.role = :master
@@ -64,9 +56,7 @@ Vagrant.configure('2') do |config|
     #node.vm.box_url = "http://puppet-vagrant-boxes.puppetlabs.com/centos-64-x64-fusion503-nocm.box"
     node.vm.hostname = 'agent1.example.com'
     node.vm.network :private_network, ip: "192.168.34.11"
-
     node.vm.provision "shell", inline: $script
-
     node.vm.provision :hosts do |provisioner|
       provisioner.autoconfigure = true
       provisioner.add_host '192.168.34.10', [
