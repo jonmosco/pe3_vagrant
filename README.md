@@ -14,12 +14,9 @@
 NOTE:  All these examples assume usage with the VMware Fusion provider.  If
 you are using VirtualBox, please adjust accordingly.
 
-Add the base box.  I have had great success with PuppetLabs Vagrant
-Boxes:
+##Vagrantfile now uses public base box
+https://vagrantcloud.com/jonnyx/boxes/centos6_vmware_nfs_base
 
-```
-$ vagrant box add centos6 http://puppet-vagrant-boxes.puppetlabs.com/centos-64-x64-fusion503-nocm.box
-```
 
  Download PE from puppetlabs.com
 
