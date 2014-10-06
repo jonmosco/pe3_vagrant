@@ -28,8 +28,8 @@ Vagrant.configure('2') do |config|
 
   ## Pupppet Master
   config.vm.define 'master' do |master|
-    master.vm.box = 'packer'
-    #master.vm.box_url = "http://puppet-vagrant-boxes.puppetlabs.com/centos-64-x64-fusion503-nocm.box"
+    master.vm.box = "jonnyx/centos6_vmware_nfs_base"
+    #master.vm.box_url = "jonnyx/centos6_vmware_nfs_base"
     ## Plugin defaults to 'master' as the hostname
     master.vm.hostname = 'master'
     master.vm.network :private_network, ip: "192.168.34.10"
@@ -52,8 +52,8 @@ Vagrant.configure('2') do |config|
 
   ## Agent
   config.vm.define 'agent1' do |node|
-    node.vm.box = 'packer'
-    #node.vm.box_url = "http://puppet-vagrant-boxes.puppetlabs.com/centos-64-x64-fusion503-nocm.box"
+    node.vm.box = "jonnyx/centos6_vmware_nfs_base"
+    #node.vm.box_url = "jonnyx/centos6_vmware_nfs_base"
     node.vm.hostname = 'agent1.example.com'
     node.vm.network :private_network, ip: "192.168.34.11"
     node.vm.provision "shell", inline: $script
