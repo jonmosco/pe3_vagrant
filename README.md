@@ -28,7 +28,7 @@ https://vagrantcloud.com/jonnyx/boxes/centos6_vmware_nfs_base
 $ vagrant pe-build copy <path_to_pe_tar.gz>
 ```
 
-Where <path_to_pe_tar.gz> is the location of the Puppet Enterprise download.
+Where path_to_pe_tar.gz is the location of the Puppet Enterprise download.
 
 Set the version of Puppet Enterprise you will be installing
 ```ruby
